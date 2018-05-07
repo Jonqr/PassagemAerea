@@ -36,7 +36,9 @@ public class RepositorioAviao {
     public boolean estaVazio(){
         return avioes.isEmpty();
     }
-
+    public int getQtdAssentos(Aviao cod){
+        return cod.getQtdAssentos();
+    }
     public List<Aviao> getAviao() {
         return avioes;
     }

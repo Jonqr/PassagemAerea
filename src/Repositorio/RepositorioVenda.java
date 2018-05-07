@@ -5,7 +5,7 @@
  */
 package Repositorio;
 
-import Model.CadVoo;
+import Model.Voo;
 import Model.Cliente;
 import Model.Venda;
 import java.lang.reflect.Array;
@@ -45,20 +45,8 @@ public class RepositorioVenda {
     public List<Venda> getVenda() {
         return venda;
     }
+        
     
-    
-        
-    public void getQtdAssento(Venda venc){
-        int qtd =0;
-        qtd = venc.getQtdAssento();
-        qtd = qtd - venda.size();
-        int qtd2 = venda.size();
-        qtd2 = qtd - qtd2;
-        
-        System.out.println("Assentos Disponiveis: "+ qtd);
-        System.out.println("Assentos ocupados: "+qtd2);
-        
-    }
     public Venda VendaExiste(String cod) {
         for (Venda ve : venda) {
             if (ve.getCodVenda().equals(cod)) {
@@ -69,6 +57,38 @@ public class RepositorioVenda {
     }
     
     
+    public Venda buscarPorAviao(String cod){
+        
+         for(Venda ve: venda){
+         
+             if(ve.getVoo().getAviao().getCódigo().equals(cod)){
+             
+                    return ve;
+             }
+         }
+         return null;
+    
+    }
+     
+    public Venda buscarPorCliente(String cliente){
+    
+        for(Venda ve: venda){
+            ve.getCliente().getRG().equals(cliente);
+            return ve;
+            
+        }
+        return null;
+    }
+
+    public Venda buscarPorData(String data){
+        for(Venda ve : venda){
+            if(ve.getDataCompra().equals(LocalDate.parse(data))){
+                return ve;
+            }
+        }
+    
+        return null;
+    }
     
     public Venda buscarVenda(String cod) {
         for (Venda ve : venda) {
